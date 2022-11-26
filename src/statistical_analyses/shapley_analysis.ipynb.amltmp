@@ -1,0 +1,93 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Step: Load in data and functions"
+      ],
+      "metadata": {
+        "nteract": {
+          "transient": {
+            "deleting": false
+          }
+        }
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [],
+      "outputs": [],
+      "execution_count": null,
+      "metadata": {}
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import joblib\r\n",
+        "import os\r\n",
+        "from pyprojroot import here\r\n",
+        "import pandas as pd\r\n",
+        "import numpy as np\r\n",
+        "import xgboost as xgb\r\n",
+        "import shap\r\n",
+        "from azureml.core import Workspace, Dataset, Datastore\r\n",
+        "from analysis.fun_drop_high_correlation import fun_drop_high_correlation\r\n",
+        "from data_cleaning.fun_load_shap_data import fun_load_shap_data\r\n",
+        "from analysis.fun_class_shape_clean_up import fun_class_shape_clean_up\r\n",
+        "path_data = here(\"./data\")\r\n",
+        "os.chdir(path_data)\r\n",
+        "data_trading_with_dummies = pd.read_parquet('data_trading_with_dummies.parquet')\r\n",
+        "path_outputs = here(\"./outputs\")\r\n",
+        "results_xgb = joblib.load(\"results_xgb.jlib\")\r\n",
+        "\r\n",
+        "data_shap = fun_load_shap_data(\r\n",
+        "    data_set_name=\"data_treatment_success_long_term_extended\",\r\n",
+        "    columns_to_remove=[\"patient_id\", \"outcome_long_term_success\"],\r\n",
+        ")\r\n",
+        "\r\n",
+        "\r\n",
+        "\r\n"
+      ],
+      "outputs": [],
+      "execution_count": null,
+      "metadata": {
+        "jupyter": {
+          "source_hidden": false,
+          "outputs_hidden": false
+        },
+        "nteract": {
+          "transient": {
+            "deleting": false
+          }
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "name": "python38-azureml",
+      "language": "python",
+      "display_name": "Python 3.8 - AzureML"
+    },
+    "language_info": {
+      "name": "python",
+      "version": "3.8.5",
+      "mimetype": "text/x-python",
+      "codemirror_mode": {
+        "name": "ipython",
+        "version": 3
+      },
+      "pygments_lexer": "ipython3",
+      "nbconvert_exporter": "python",
+      "file_extension": ".py"
+    },
+    "kernel_info": {
+      "name": "python38-azureml"
+    },
+    "nteract": {
+      "version": "nteract-front-end@1.0.0"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 2
+}
