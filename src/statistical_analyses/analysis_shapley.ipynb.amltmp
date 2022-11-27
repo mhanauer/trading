@@ -15,34 +15,43 @@
     },
     {
       "cell_type": "code",
-      "source": [],
+      "source": [
+        "%load_ext lab_black"
+      ],
       "outputs": [],
-      "execution_count": null,
+      "execution_count": 1,
       "metadata": {}
     },
     {
       "cell_type": "code",
       "source": [
-        "import joblib\r\n",
-        "import os\r\n",
-        "from pyprojroot import here\r\n",
-        "import pandas as pd\r\n",
-        "import numpy as np\r\n",
-        "import xgboost as xgb\r\n",
-        "import shap\r\n",
-        "from azureml.core import Workspace, Dataset, Datastore\r\n",
-        "from analysis.fun_drop_high_correlation import fun_drop_high_correlation\r\n",
-        "from data_cleaning.fun_load_shap_data import fun_load_shap_data\r\n",
-        "from analysis.fun_class_shape_clean_up import fun_class_shape_clean_up\r\n",
-        "path_data = here(\"./data\")\r\n",
-        "os.chdir(path_data)\r\n",
-        "data_trading_with_dummies = pd.read_parquet('data_trading_with_dummies.parquet')\r\n",
-        "path_outputs = here(\"./outputs\")\r\n",
-        "os.chdir(path_outputs)\r\n",
+        "import joblib\n",
+        "import os\n",
+        "from pyprojroot import here\n",
+        "import pandas as pd\n",
+        "import numpy as np\n",
+        "import xgboost as xgb\n",
+        "import shap\n",
+        "from azureml.core import Workspace, Dataset, Datastore\n",
+        "from analysis.fun_drop_high_correlation import fun_drop_high_correlation\n",
+        "from data_cleaning.fun_load_shap_data import fun_load_shap_data\n",
+        "from analysis.fun_class_shape_clean_up import fun_class_shape_clean_up\n",
+        "\n",
+        "path_data = here(\"./data\")\n",
+        "os.chdir(path_data)\n",
+        "data_trading_with_dummies = pd.read_parquet(\"data_trading_with_dummies.parquet\")\n",
+        "path_outputs = here(\"./outputs\")\n",
+        "os.chdir(path_outputs)\n",
         "results_xgb = joblib.load(\"results_xgb.jlib\")"
       ],
-      "outputs": [],
-      "execution_count": 8,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stderr",
+          "text": "/anaconda/envs/azureml_py38/lib/python3.8/site-packages/xgboost/compat.py:31: FutureWarning: pandas.Int64Index is deprecated and will be removed from pandas in a future version. Use pandas.Index with the appropriate dtype instead.\n  from pandas import MultiIndex, Int64Index\n"
+        }
+      ],
+      "execution_count": 2,
       "metadata": {
         "jupyter": {
           "source_hidden": false,
@@ -54,19 +63,19 @@
           }
         },
         "gather": {
-          "logged": 1669471233017
+          "logged": 1669558611398
         }
       }
     },
     {
       "cell_type": "code",
       "source": [
-        "data_trading_with_dummies = data_trading_with_dummies.reset_index()\r\n",
-        "data_id = data_trading_with_dummies['index']\r\n",
-        "data_trading = data_trading_with_dummies.drop(columns = ['index'])"
+        "data_trading_with_dummies = data_trading_with_dummies.reset_index()\n",
+        "data_id = data_trading_with_dummies[\"index\"]\n",
+        "data_trading = data_trading_with_dummies.drop(columns=[\"index\"])"
       ],
       "outputs": [],
-      "execution_count": 9,
+      "execution_count": 3,
       "metadata": {
         "jupyter": {
           "source_hidden": false,
@@ -78,19 +87,21 @@
           }
         },
         "gather": {
-          "logged": 1669471246820
+          "logged": 1669558614056
         }
       }
     },
     {
       "cell_type": "code",
       "source": [
-        "data_trading_shap = fun_class_shape_clean_up(data_shap = data_trading, data_id= data_id, model = results_xgb)\r\n",
-        "os.chdir(path_data)\r\n",
+        "data_trading_shap = fun_class_shape_clean_up(\n",
+        "    data_shap=data_trading, data_id=data_id, model=results_xgb\n",
+        ")\n",
+        "os.chdir(path_data)\n",
         "data_trading_shap.to_parquet(\"data_trading_shap.parquet\")"
       ],
       "outputs": [],
-      "execution_count": 12,
+      "execution_count": 4,
       "metadata": {
         "jupyter": {
           "source_hidden": false,
@@ -102,7 +113,7 @@
           }
         },
         "gather": {
-          "logged": 1669471303564
+          "logged": 1669558625221
         }
       }
     }

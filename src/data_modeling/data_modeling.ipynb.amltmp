@@ -47,10 +47,10 @@
         "data_trading = pd.read_csv(\"result_matrix.csv\")"
       ],
       "outputs": [],
-      "execution_count": 9,
+      "execution_count": 2,
       "metadata": {
         "gather": {
-          "logged": 1669466912662
+          "logged": 1669557810949
         }
       }
     },
@@ -83,18 +83,8 @@
         "    [data_trading_no_time, data_trading_dummies], axis=1\n",
         ")"
       ],
-      "outputs": [
-        {
-          "output_type": "execute_result",
-          "execution_count": 20,
-          "data": {
-            "text/plain": "          buy     sell  qty      stp        sd     trend  level  volume  \\\n0     4320.00  4324.25    2  4299.00  4.178997  0.770979      0    1235   \n1     4322.25  4324.00    2  4313.50  1.753109  0.291084      0     897   \n2     4324.00  4325.75    1  4313.50  1.753109  0.291084      1     897   \n3     4324.25  4328.25    1  4299.00  4.178997  0.770979      1    1235   \n4     4327.00  4329.25    4  4320.25  2.225455  0.213287     -2    1042   \n...       ...      ...  ...      ...       ...       ...    ...     ...   \n5895  3990.25  3994.75    4  3977.25  4.370615  1.045455     -2    5208   \n5896  3999.00  4003.25    2  3977.25  4.370615  1.045455      0    5208   \n5897  3994.75  3999.00    3  3977.25  4.370615  1.045455     -1    5208   \n5898  4001.00  4006.00    2  3975.25  5.138240 -0.772727      0   15249   \n5899  3995.75  4001.00    3  3975.25  5.138240 -0.772727     -1   15249   \n\n          vloc  vtrend  ...  minute_15  minute_20  minute_25  minute_30  \\\n0    -0.705960  -268.8  ...          1          0          0          0   \n1     0.128701    63.2  ...          0          1          0          0   \n2     0.128701    63.2  ...          0          1          0          0   \n3    -0.705960  -268.8  ...          1          0          0          0   \n4     0.211966    14.2  ...          0          0          0          0   \n...        ...     ...  ...        ...        ...        ...        ...   \n5895 -1.519997 -1274.0  ...          0          0          0          0   \n5896 -1.519997 -1274.0  ...          0          0          0          0   \n5897 -1.519997 -1274.0  ...          0          0          0          0   \n5898  1.172985   675.7  ...          0          0          0          0   \n5899  1.172985   675.7  ...          0          0          0          0   \n\n      minute_35  minute_40  minute_45  minute_5 minute_50  minute_55  \n0             0          0          0         0         0          0  \n1             0          0          0         0         0          0  \n2             0          0          0         0         0          0  \n3             0          0          0         0         0          0  \n4             0          0          0         0         0          0  \n...         ...        ...        ...       ...       ...        ...  \n5895          0          1          0         0         0          0  \n5896          0          1          0         0         0          0  \n5897          0          1          0         0         0          0  \n5898          0          1          0         0         0          0  \n5899          0          1          0         0         0          0  \n\n[5900 rows x 91 columns]",
-            "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>buy</th>\n      <th>sell</th>\n      <th>qty</th>\n      <th>stp</th>\n      <th>sd</th>\n      <th>trend</th>\n      <th>level</th>\n      <th>volume</th>\n      <th>vloc</th>\n      <th>vtrend</th>\n      <th>...</th>\n      <th>minute_15</th>\n      <th>minute_20</th>\n      <th>minute_25</th>\n      <th>minute_30</th>\n      <th>minute_35</th>\n      <th>minute_40</th>\n      <th>minute_45</th>\n      <th>minute_5</th>\n      <th>minute_50</th>\n      <th>minute_55</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>0</th>\n      <td>4320.00</td>\n      <td>4324.25</td>\n      <td>2</td>\n      <td>4299.00</td>\n      <td>4.178997</td>\n      <td>0.770979</td>\n      <td>0</td>\n      <td>1235</td>\n      <td>-0.705960</td>\n      <td>-268.8</td>\n      <td>...</td>\n      <td>1</td>\n      <td>0</td>\n      <td>0</td>\n      <td>0</td>\n      <td>0</td>\n      <td>0</td>\n      <td>0</td>\n      <td>0</td>\n      <td>0</td>\n      <td>0</td>\n    </tr>\n    <tr>\n      <th>1</th>\n      <td>4322.25</td>\n      <td>4324.00</td>\n      <td>2</td>\n      <td>4313.50</td>\n      <td>1.753109</td>\n      <td>0.291084</td>\n      <td>0</td>\n      <td>897</td>\n      <td>0.128701</td>\n      <td>63.2</td>\n      <td>...</td>\n      <td>0</td>\n      <td>1</td>\n      <td>0</td>\n      <td>0</td>\n      <td>0</td>\n      <td>0</td>\n      <td>0</td>\n      <td>0</td>\n      <td>0</td>\n      <td>0</td>\n    </tr>\n    <tr>\n      <th>2</th>\n      <td>4324.00</td>\n      <td>4325.75</td>\n      <td>1</td>\n      <td>4313.50</td>\n      <td>1.753109</td>\n      <td>0.291084</td>\n      <td>1</td>\n      <td>897</td>\n      <td>0.128701</td>\n      <td>63.2</td>\n      <td>...</td>\n      <td>0</td>\n      <td>1</td>\n      <td>0</td>\n      <td>0</td>\n      <td>0</td>\n      <td>0</td>\n      <td>0</td>\n      <td>0</td>\n      <td>0</td>\n      <td>0</td>\n    </tr>\n    <tr>\n      <th>3</th>\n      <td>4324.25</td>\n      <td>4328.25</td>\n      <td>1</td>\n      <td>4299.00</td>\n      <td>4.178997</td>\n      <td>0.770979</td>\n      <td>1</td>\n      <td>1235</td>\n      <td>-0.705960</td>\n      <td>-268.8</td>\n      <td>...</td>\n      <td>1</td>\n      <td>0</td>\n      <td>0</td>\n      <td>0</td>\n      <td>0</td>\n      <td>0</td>\n      <td>0</td>\n      <td>0</td>\n      <td>0</td>\n      <td>0</td>\n    </tr>\n    <tr>\n      <th>4</th>\n      <td>4327.00</td>\n      <td>4329.25</td>\n      <td>4</td>\n      <td>4320.25</td>\n      <td>2.225455</td>\n      <td>0.213287</td>\n      <td>-2</td>\n      <td>1042</td>\n      <td>0.211966</td>\n      <td>14.2</td>\n      <td>...</td>\n      <td>0</td>\n      <td>0</td>\n      <td>0</td>\n      <td>0</td>\n      <td>0</td>\n      <td>0</td>\n      <td>0</td>\n      <td>0</td>\n      <td>0</td>\n      <td>0</td>\n    </tr>\n    <tr>\n      <th>...</th>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n    </tr>\n    <tr>\n      <th>5895</th>\n      <td>3990.25</td>\n      <td>3994.75</td>\n      <td>4</td>\n      <td>3977.25</td>\n      <td>4.370615</td>\n      <td>1.045455</td>\n      <td>-2</td>\n      <td>5208</td>\n      <td>-1.519997</td>\n      <td>-1274.0</td>\n      <td>...</td>\n      <td>0</td>\n      <td>0</td>\n      <td>0</td>\n      <td>0</td>\n      <td>0</td>\n      <td>1</td>\n      <td>0</td>\n      <td>0</td>\n      <td>0</td>\n      <td>0</td>\n    </tr>\n    <tr>\n      <th>5896</th>\n      <td>3999.00</td>\n      <td>4003.25</td>\n      <td>2</td>\n      <td>3977.25</td>\n      <td>4.370615</td>\n      <td>1.045455</td>\n      <td>0</td>\n      <td>5208</td>\n      <td>-1.519997</td>\n      <td>-1274.0</td>\n      <td>...</td>\n      <td>0</td>\n      <td>0</td>\n      <td>0</td>\n      <td>0</td>\n      <td>0</td>\n      <td>1</td>\n      <td>0</td>\n      <td>0</td>\n      <td>0</td>\n      <td>0</td>\n    </tr>\n    <tr>\n      <th>5897</th>\n      <td>3994.75</td>\n      <td>3999.00</td>\n      <td>3</td>\n      <td>3977.25</td>\n      <td>4.370615</td>\n      <td>1.045455</td>\n      <td>-1</td>\n      <td>5208</td>\n      <td>-1.519997</td>\n      <td>-1274.0</td>\n      <td>...</td>\n      <td>0</td>\n      <td>0</td>\n      <td>0</td>\n      <td>0</td>\n      <td>0</td>\n      <td>1</td>\n      <td>0</td>\n      <td>0</td>\n      <td>0</td>\n      <td>0</td>\n    </tr>\n    <tr>\n      <th>5898</th>\n      <td>4001.00</td>\n      <td>4006.00</td>\n      <td>2</td>\n      <td>3975.25</td>\n      <td>5.138240</td>\n      <td>-0.772727</td>\n      <td>0</td>\n      <td>15249</td>\n      <td>1.172985</td>\n      <td>675.7</td>\n      <td>...</td>\n      <td>0</td>\n      <td>0</td>\n      <td>0</td>\n      <td>0</td>\n      <td>0</td>\n      <td>1</td>\n      <td>0</td>\n      <td>0</td>\n      <td>0</td>\n      <td>0</td>\n    </tr>\n    <tr>\n      <th>5899</th>\n      <td>3995.75</td>\n      <td>4001.00</td>\n      <td>3</td>\n      <td>3975.25</td>\n      <td>5.138240</td>\n      <td>-0.772727</td>\n      <td>-1</td>\n      <td>15249</td>\n      <td>1.172985</td>\n      <td>675.7</td>\n      <td>...</td>\n      <td>0</td>\n      <td>0</td>\n      <td>0</td>\n      <td>0</td>\n      <td>0</td>\n      <td>1</td>\n      <td>0</td>\n      <td>0</td>\n      <td>0</td>\n      <td>0</td>\n    </tr>\n  </tbody>\n</table>\n<p>5900 rows × 91 columns</p>\n</div>"
-          },
-          "metadata": {}
-        }
-      ],
-      "execution_count": 20,
+      "outputs": [],
+      "execution_count": 3,
       "metadata": {
         "jupyter": {
           "source_hidden": false,
@@ -106,7 +96,7 @@
           }
         },
         "gather": {
-          "logged": 1669467374531
+          "logged": 1669557833429
         }
       }
     },
@@ -131,7 +121,7 @@
         ")"
       ],
       "outputs": [],
-      "execution_count": 23,
+      "execution_count": 4,
       "metadata": {
         "jupyter": {
           "source_hidden": false,
@@ -143,7 +133,7 @@
           }
         },
         "gather": {
-          "logged": 1669468636725
+          "logged": 1669557837453
         }
       }
     },
@@ -166,7 +156,7 @@
         "data_trading_with_dummies.to_parquet(\"data_trading_with_dummies.parquet\")"
       ],
       "outputs": [],
-      "execution_count": 24,
+      "execution_count": 5,
       "metadata": {
         "jupyter": {
           "source_hidden": false,
@@ -178,7 +168,7 @@
           }
         },
         "gather": {
-          "logged": 1669468639408
+          "logged": 1669557839946
         }
       }
     }
