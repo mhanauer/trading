@@ -39,19 +39,13 @@
         "\n",
         "path_data = here(\"./data\")\n",
         "os.chdir(path_data)\n",
-        "data_trading_with_dummies = pd.read_parquet(\"data_trading_with_dummies.parquet\")\n",
+        "data_trading_analysis = pd.read_parquet(\"data_trading_good_features.parquet\")\n",
         "path_outputs = here(\"./outputs\")\n",
         "os.chdir(path_outputs)\n",
         "results_xgb = joblib.load(\"results_xgb.jlib\")"
       ],
-      "outputs": [
-        {
-          "output_type": "stream",
-          "name": "stderr",
-          "text": "/anaconda/envs/azureml_py38/lib/python3.8/site-packages/xgboost/compat.py:31: FutureWarning: pandas.Int64Index is deprecated and will be removed from pandas in a future version. Use pandas.Index with the appropriate dtype instead.\n  from pandas import MultiIndex, Int64Index\n"
-        }
-      ],
-      "execution_count": 2,
+      "outputs": [],
+      "execution_count": 6,
       "metadata": {
         "jupyter": {
           "source_hidden": false,
@@ -63,19 +57,19 @@
           }
         },
         "gather": {
-          "logged": 1669558611398
+          "logged": 1669845961009
         }
       }
     },
     {
       "cell_type": "code",
       "source": [
-        "data_trading_with_dummies = data_trading_with_dummies.reset_index()\n",
-        "data_id = data_trading_with_dummies[\"index\"]\n",
-        "data_trading = data_trading_with_dummies.drop(columns=[\"index\"])"
+        "data_trading_analysis = data_trading_analysis.reset_index()\n",
+        "data_id = data_trading_analysis[\"index\"]\n",
+        "data_trading = data_trading_analysis.drop(columns=[\"index\"])"
       ],
       "outputs": [],
-      "execution_count": 3,
+      "execution_count": 7,
       "metadata": {
         "jupyter": {
           "source_hidden": false,
@@ -87,7 +81,7 @@
           }
         },
         "gather": {
-          "logged": 1669558614056
+          "logged": 1669845964253
         }
       }
     },
@@ -101,7 +95,7 @@
         "data_trading_shap.to_parquet(\"data_trading_shap.parquet\")"
       ],
       "outputs": [],
-      "execution_count": 4,
+      "execution_count": 9,
       "metadata": {
         "jupyter": {
           "source_hidden": false,
@@ -113,7 +107,7 @@
           }
         },
         "gather": {
-          "logged": 1669558625221
+          "logged": 1669845992994
         }
       }
     }

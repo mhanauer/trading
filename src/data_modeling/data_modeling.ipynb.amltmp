@@ -44,13 +44,13 @@
         "\n",
         "path_data = here(\"./data\")\n",
         "os.chdir(path_data)\n",
-        "data_trading = pd.read_csv(\"result_matrix.csv\")"
+        "data_trading = pd.read_csv(\"result_matrix_xgpredict.csv\")"
       ],
       "outputs": [],
-      "execution_count": 2,
+      "execution_count": 17,
       "metadata": {
         "gather": {
-          "logged": 1669557810949
+          "logged": 1669845360924
         }
       }
     },
@@ -70,21 +70,12 @@
     {
       "cell_type": "code",
       "source": [
-        "data_trading_no_time = data_trading.drop(columns=[\"timestamp\", \"filled_timestamp\"])\n",
-        "data_trading_dummies = pd.get_dummies(\n",
-        "    data=data_trading[[\"weekday\", \"day\", \"hour\", \"minute\"]].astype(str)\n",
-        ")\n",
-        "\n",
-        "data_trading_no_time = data_trading_no_time.drop(\n",
-        "    columns=[\"weekday\", \"day\", \"hour\", \"minute\"]\n",
-        ")\n",
-        "\n",
-        "data_trading_with_dummies = pd.concat(\n",
-        "    [data_trading_no_time, data_trading_dummies], axis=1\n",
+        "data_trading_good_features = data_trading.drop(\n",
+        "    columns=[\"timestamp\", \"filled_timestamp\", \"pl\", \"buy\", \"sell\"]\n",
         ")"
       ],
       "outputs": [],
-      "execution_count": 3,
+      "execution_count": 18,
       "metadata": {
         "jupyter": {
           "source_hidden": false,
@@ -96,7 +87,7 @@
           }
         },
         "gather": {
-          "logged": 1669557833429
+          "logged": 1669845361916
         }
       }
     },
@@ -110,30 +101,6 @@
           "transient": {
             "deleting": false
           }
-        }
-      }
-    },
-    {
-      "cell_type": "code",
-      "source": [
-        "data_trading_with_dummies[\"result\"] = np.where(\n",
-        "    data_trading_with_dummies[\"result\"] == \"win\", 1, 0\n",
-        ")"
-      ],
-      "outputs": [],
-      "execution_count": 4,
-      "metadata": {
-        "jupyter": {
-          "source_hidden": false,
-          "outputs_hidden": false
-        },
-        "nteract": {
-          "transient": {
-            "deleting": false
-          }
-        },
-        "gather": {
-          "logged": 1669557837453
         }
       }
     },
@@ -153,10 +120,10 @@
     {
       "cell_type": "code",
       "source": [
-        "data_trading_with_dummies.to_parquet(\"data_trading_with_dummies.parquet\")"
+        "data_trading_good_features.to_parquet(\"data_trading_good_features.parquet\")"
       ],
       "outputs": [],
-      "execution_count": 5,
+      "execution_count": 19,
       "metadata": {
         "jupyter": {
           "source_hidden": false,
@@ -168,7 +135,7 @@
           }
         },
         "gather": {
-          "logged": 1669557839946
+          "logged": 1669845363897
         }
       }
     }
