@@ -44,8 +44,14 @@
         "os.chdir(path_outputs)\n",
         "results_xgb = joblib.load(\"results_xgb.jlib\")"
       ],
-      "outputs": [],
-      "execution_count": 6,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stderr",
+          "text": "/anaconda/envs/azureml_py38/lib/python3.8/site-packages/xgboost/compat.py:31: FutureWarning: pandas.Int64Index is deprecated and will be removed from pandas in a future version. Use pandas.Index with the appropriate dtype instead.\n  from pandas import MultiIndex, Int64Index\n"
+        }
+      ],
+      "execution_count": 2,
       "metadata": {
         "jupyter": {
           "source_hidden": false,
@@ -57,7 +63,7 @@
           }
         },
         "gather": {
-          "logged": 1669845961009
+          "logged": 1669999969529
         }
       }
     },
@@ -69,7 +75,7 @@
         "data_trading = data_trading_analysis.drop(columns=[\"index\"])"
       ],
       "outputs": [],
-      "execution_count": 7,
+      "execution_count": 4,
       "metadata": {
         "jupyter": {
           "source_hidden": false,
@@ -81,7 +87,7 @@
           }
         },
         "gather": {
-          "logged": 1669845964253
+          "logged": 1669999977456
         }
       }
     },
@@ -95,7 +101,7 @@
         "data_trading_shap.to_parquet(\"data_trading_shap.parquet\")"
       ],
       "outputs": [],
-      "execution_count": 9,
+      "execution_count": 5,
       "metadata": {
         "jupyter": {
           "source_hidden": false,
